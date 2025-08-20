@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Dharma Dose</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .dharma-container { max-width:700px; margin:40px auto; background:#fff8f0; border-radius:24px; box-shadow:0 4px 24px rgba(0,0,0,0.07); padding:32px; text-align:center; }
+        .dharma-title { color:#6e32c9; font-size:2em; margin-bottom:0.5em; }
+        .shlok { font-size:1.3em; color:#d97706; margin:18px 0 8px 0; font-family:'Noto Serif',serif; }
+        .meaning { color:#333; font-size:1.1em; margin-bottom:18px; }
+        .pronounce-btn { background:#6e32c9; color:#fff; border:none; border-radius:16px; padding:10px 28px; font-size:1em; cursor:pointer; margin-bottom:18px; }
+        .quote { font-style:italic; color:#6e32c9; font-size:1.2em; margin-bottom:18px; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">🕉️ Ek Yana</div>
+        
+         <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="pandit.html">Pandit Ji</a></li>
+            <li><a href="booking.html">Booking</a></li>
+            <li><a href="dharma.html">Dharma</a></li>
+            <li><a href="teachings.html">Teachings</a></li>
+            <li><a href="community.html">Community</a></li>
+            <li><a href="horoscope.html">Horoscope</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <div class="nav-icons">
+            <span>🔍</span>
+            <span>🛒</span>
+        </div>
+    </nav>
+    <div class="dharma-container">
+        <div class="dharma-title">Daily Dharma Dose</div>
+        <div class="quote" id="quote"></div>
+        <div class="shlok" id="shlok"></div>
+        <div class="meaning" id="meaning"></div>
+        <button class="pronounce-btn" onclick="">🔊 Pronounce Shlok</button>
+  <audio id="shlok-audio" src="https://cdn.pixabay.com/audio/2022/10/16/audio_12b6b2b1b7.mp3"></audio>
+    </div>
+    <script>
+    // Sample Bhagavad Gita quotes, shloks, and meanings
+    const dharmaDoses = [
+      {
+        quote: 'You have the right to work, but never to the fruit of work.',
+        shlok: 'कर्मण्येवाधिकारस्ते मा फलेषु कदाचन ।\nमा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि ॥',
+        meaning: 'You are entitled to perform your prescribed duties, but you are not entitled to the fruits of your actions. Never consider yourself the cause of the results of your activities, nor be attached to inaction.'
+      },
+      {
+        quote: 'Change is the law of the universe. You can be a millionaire, or a pauper in an instant.',
+        shlok: 'समः शत्रौ च मित्रे च तथा मानापमानयोः।\nशीतोष्णसुखदुःखेषु समः सङ्गविवर्जितः॥',
+        meaning: 'One who is equal to friends and enemies, who is equipoised in honor and dishonor, heat and cold, happiness and distress, and who is free from all attachment, is very dear to Me.'
+      },
+      {
+        quote: 'A person can rise through the efforts of his own mind; or draw himself down, in the same manner.',
+        shlok: 'उद्धरेदात्मनात्मानं नात्मानमवसादयेत्।\nआत्मैव ह्यात्मनो बन्धुरात्मैव रिपुरात्मनः॥',
+        meaning: 'Elevate yourself through your own efforts, do not degrade yourself. The mind can be your best friend and also your worst enemy.'
+      }
+    ];
+    // Show a new dose each day
+    const today = new Date();
+    const idx = today.getDate() % dharmaDoses.length;
+    document.getElementById('quote').textContent = dharmaDoses[idx].quote;
+    document.getElementById('shlok').textContent = dharmaDoses[idx].shlok;
+    document.getElementById('meaning').textContent = dharmaDoses[idx].meaning;
+    // Pronounce the Sanskrit shlok
+    function pronounceShlok() {
+  // Demo: Play a sample Sanskrit shlok audio
+  var audio = document.getElementById('shlok-audio');
+  audio.currentTime = 0;
+  audio.play();
+    }
+    </script>
+</body>
+</html>

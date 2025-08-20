@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dharma AI Pandit Ji</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .pandit-ui { max-width:900px; margin:40px auto 0 auto; padding:32px; background:#fff8f0; border-radius:24px; box-shadow:0 4px 24px rgba(0,0,0,0.07); }
+        .pandit-ui h2 { color:#6e32c9; margin-bottom:1em; }
+        #pandit-video { width:320px; height:320px; background:#e5e5e5; border-radius:50%; margin:0 auto 24px auto; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 16px rgba(110,50,201,0.08); }
+        #pandit-response { margin-top:24px; padding:18px; background:#f5e9ff; border-radius:16px; min-height:60px; color:#333; }
+        .pandit-ui input[type="text"] { width:80%; padding:12px 18px; border-radius:16px; border:1px solid #d1d5db; font-size:1em; margin-bottom:12px; }
+        .pandit-ui button { background:#6e32c9; color:#fff; padding:10px 32px; border:none; border-radius:16px; font-size:1em; cursor:pointer; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">🕉️ Ek Yana</div>
+         <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="pandit.html">Pandit Ji</a></li>
+            <li><a href="booking.html">Booking</a></li>
+            <li><a href="dharma.html">Dharma</a></li>
+            <li><a href="teachings.html">Teachings</a></li>
+            <li><a href="community.html">Community</a></li>
+            <li><a href="horoscope.html">Horoscope</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <div class="nav-icons">
+            <span>🔍</span>
+            <span>🛒</span>
+        </div>
+    </nav>
+    <!-- Dharma AI Pandit UI Section -->
+    <div class="pandit-ui">
+        <h2>Dharma AI Pandit Ji/Priest</h2>
+        <!-- Video Avatar Placeholder: Integrate D-ID/Synthesia/DeepBrain here -->
+        <div id="pandit-video">
+            <!-- D-ID Pandit Avatar Embed -->
+            <iframe src="https://studio.d-id.com/agents/share?id=v2_agt__sCzBuXn&utm_source=copy&key=WjI5dloyeGxMVzloZFhSb01ud3hNVFl5TmpVM05UYzBOemc1TXprM016UXhPRGc2Y25OdlpIQnhZMlpVZEZoamRYUXdVbVprZEVNNA==" width="320" height="320" style="border-radius:50%;border:none;" allow="camera; microphone; autoplay; clipboard-read; clipboard-write; encrypted-media;" allowfullscreen></iframe>
+        </div>
+        <!-- Chat/Voice Input UI -->
+        <div style="display:flex;flex-direction:column;align-items:center;">
+            <input id="pandit-input" type="text" placeholder="Ask Pandit Ji about Dharma, rituals, mantras...">
+            <div style="display:flex;gap:12px;">
+                <button id="ask-btn">Ask</button>
+                <button id="voice-btn" title="Speak your question" style="background:#f5e9ff;color:#6e32c9;">🎤</button>
+            </div>
+        </div>
+        <!-- Response Area -->
+        <div id="pandit-response"></div>
+        <div id="audio-player"></div>
+        <!-- API Key Placeholder -->
+    <!-- Paste your D-ID API key here -->
+    <!-- const DID_API_KEY = 'bW9rc2hzaW5kaHdhbmkyQGdtYWlsLmNvbQ:in3JSfaCLobtWx-pG0tr0'; -->
+    <!-- Example D-ID integration (replace with actual SDK/iframe as per D-ID docs):
+    <iframe src="https://studio.d-id.com/embed?apiKey=bW9rc2hzaW5kaHdhbmkyQGdtYWlsLmNvbQ:in3JSfaCLobtWx-pG0tr0" width="320" height="320" style="border-radius:50%;border:none;"></iframe>
+    -->
+        <!-- Integration Comments:
+            - Integrate AI backend/API for Dharma Q&A (see JS below)
+            - Use D-ID/Synthesia/DeepBrain for video avatar (see #pandit-video)
+            - Use TTS for voice responses (see speakText function)
+            - Add speech-to-text for voice queries (see voice input button)
+            - Connect to ritual/mantra database if available
+            - Add live Pandit video call option if needed
+        -->
+    </div>
+    <script>
+    // API Key placeholder
+    // const API_KEY = 'YOUR_API_KEY_HERE';
+
+    // Simulated AI Pandit response (replace with API call)
+    function getPanditResponse(query) {
+        // TODO: Replace with real API call using API_KEY
+        if (!query.trim()) return "Please ask a question about Dharma, rituals, or mantras.";
+        if (query.toLowerCase().includes("mantra")) return "Aum Namah Shivaya is a powerful mantra for peace and spiritual growth.";
+        if (query.toLowerCase().includes("ritual")) return "For daily rituals, begin with a clean space, light a diya, and chant your chosen mantra.";
+        if (query.toLowerCase().includes("dharma")) return "Dharma is the path of righteousness, truth, and duty. Follow your heart and help others.";
+        return "Pandit Ji says: Seek knowledge, practice compassion, and honor your traditions is what Geeta teaches.";
+    }
+
+    // Text-to-Speech (TTS)
+    function speakText(text) {
+        if ('speechSynthesis' in window) {
+            const utter = new SpeechSynthesisUtterance(text);
+            utter.lang = 'en-IN';
+            utter.rate = 1;
+            window.speechSynthesis.speak(utter);
+        }
+    }
+
+    // Handle chat input
+    document.getElementById('ask-btn').onclick = function() {
+        const input = document.getElementById('pandit-input').value;
+        const response = getPanditResponse(input);
+        document.getElementById('pandit-response').textContent = response;
+        speakText(response);
+    };
+
+    // Voice input (Speech-to-Text)
+    document.getElementById('voice-btn').onclick = function() {
+        if (!('webkitSpeechRecognition' in window)) {
+            alert('Speech recognition not supported in this browser.');
+            return;
+        }
+        const recognition = new webkitSpeechRecognition();
+        recognition.lang = 'en-IN';
+        recognition.onresult = function(event) {
+            const transcript = event.results[0][0].transcript;
+            document.getElementById('pandit-input').value = transcript;
+            const response = getPanditResponse(transcript);
+            document.getElementById('pandit-response').textContent = response;
+            speakText(response);
+        };
+        recognition.start();
+    };
+    </script>
+</body>
+</html>

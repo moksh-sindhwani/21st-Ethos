@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ek Yana Pricing</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .pricing-container { max-width:900px; margin:40px auto; background:#fff8f0; border-radius:24px; box-shadow:0 4px 24px rgba(0,0,0,0.07); padding:32px; }
+        .pricing-title { color:#6e32c9; font-size:2em; margin-bottom:1em; text-align:center; }
+        .cards { display:flex; gap:32px; justify-content:center; flex-wrap:wrap; }
+        .price-card { background:#fff; border-radius:18px; box-shadow:0 2px 12px rgba(110,50,201,0.08); padding:32px 24px; width:320px; display:flex; flex-direction:column; align-items:center; }
+        .plan-title { color:#6e32c9; font-size:1.3em; font-weight:600; margin-bottom:8px; }
+        .plan-price { color:#d97706; font-size:2em; font-weight:700; margin-bottom:8px; }
+        .plan-desc { color:#333; margin-bottom:18px; text-align:center; }
+        .plan-features { list-style:none; padding:0; margin-bottom:18px; }
+        .plan-features li { margin-bottom:8px; color:#333; }
+        .plan-action { background:#6e32c9; color:#fff; border:none; border-radius:16px; padding:12px 32px; font-size:1em; cursor:pointer; margin-top:12px; }
+        .plan-action.secondary { background:#d97706; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">🕉️ Ek Yana</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="pandit.html">Pandit Ji</a></li>
+            <li><a href="booking.html">Booking</a></li>
+            <li><a href="dharma.html">Dharma</a></li>
+            <li><a href="teachings.html">Teachings</a></li>
+            <li><a href="community.html">Community</a></li>
+            <li><a href="horoscope.html">Horoscope</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            
+        </ul>
+        <div class="nav-icons">
+            <span>🔍</span>
+            <span>🛒</span>
+        </div>
+    </nav>
+    <div class="pricing-container">
+        <div class="pricing-title">Choose Your Ek Yana Plan</div>
+        <div class="cards">
+            <div class="price-card">
+                <div class="plan-title">Freemium</div>
+                <div class="plan-price">Free</div>
+                <div class="plan-desc">Access all features except AI Pandit and AR Experience.</div>
+                <ul class="plan-features">
+                    <li>Daily Dharma Dose</li>
+                    <li>Book Pandit & Puja</li>
+                    <li>Community Connect</li>
+                    <li>Horoscope & Kundli</li>
+                    <li>Teachings & Shorts</li>
+                    <li>Resources Library</li>
+                    <li><span style="color:#d97706;">AI Pandit & AR Experience <b>not included</b></span></li>
+                </ul>
+                <button class="plan-action secondary">Get Started</button>
+            </div>
+            <div class="price-card">
+                <div class="plan-title">Premium</div>
+                <div class="plan-price">₹2200 <span style="font-size:0.6em; color:#333;">one time</span><br>₹500/year</div>
+                <div class="plan-desc">Unlock AI Pandit and immersive AR Experience, plus all Freemium features.</div>
+                <ul class="plan-features">
+                    <li>All Freemium Features</li>
+                    <li><b>AI Pandit Ji</b> (Live & AI-based)</li>
+                    <li><b>AR Pilgrimage & Rituals</b></li>
+                    <li>Priority Support</li>
+                </ul>
+                <button class="plan-action">Upgrade Now</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

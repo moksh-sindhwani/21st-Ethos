@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pandit Booking Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+    .booking-container { max-width:900px; margin:40px auto; background:#fff8f0; border-radius:24px; box-shadow:0 4px 24px rgba(0,0,0,0.07); padding:32px; }
+    .booking-container h1 { color:#6e32c9; margin-bottom:1em; }
+    .booking-form { display:flex; flex-direction:column; gap:18px; margin-bottom:32px; }
+    .booking-form label { font-weight:500; color:#1d1d1f; }
+    .booking-form input, .booking-form select, .booking-form textarea { padding:10px 16px; border-radius:12px; border:1px solid #d1d5db; font-size:1em; }
+    .booking-form button { background:#6e32c9; color:#fff; padding:12px 32px; border:none; border-radius:16px; font-size:1em; cursor:pointer; margin-top:12px; }
+    .invite-section { background:#f5e9ff; border-radius:16px; padding:24px; margin-top:24px; }
+    .invite-section h2 { color:#d97706; margin-bottom:0.5em; }
+    .invite-section input { width:70%; margin-bottom:12px; font-size:1.1em; padding:10px 16px; border-radius:12px; border:1px solid #d1d5db; }
+    .invite-section input::placeholder { color:#6e32c9; font-style:italic; opacity:0.8; }
+    .invite-section button { background:#d97706; color:#fff; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">🕉️ Ek Yana</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="pandit.html">Pandit Ji</a></li>
+            <li><a href="booking.html">Booking</a></li>
+            <li><a href="dharma.html">Dharma</a></li>
+            <li><a href="teachings.html">Teachings</a></li>
+            <li><a href="community.html">Community</a></li>
+            <li><a href="horoscope.html">Horoscope</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <div class="nav-icons">
+            <span>🔍</span>
+            <span>🛒</span>
+        </div>
+    </nav>
+    <div class="booking-container">
+        <h1>Pandit Booking & Puja Portal</h1>
+        <form class="booking-form">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="service">Select Service</label>
+            <select id="service" name="service" required>
+                <option value="">Choose...</option>
+                <option value="puja">Book Pandit for Puja</option>
+                <option value="cremation">Cremational Ceremony</option>
+                <option value="other">Other Ritual</option>
+            </select>
+
+            <label for="date">Date & Time</label>
+            <input type="datetime-local" id="date" name="date" required>
+
+            <label for="details">Details (e.g., Puja type, location, special requests)</label>
+            <textarea id="details" name="details" rows="3"></textarea>
+
+            <button type="submit">Book Now</button>
+        </form>
+        <div class="invite-section">
+            <div style="display:flex;align-items:center;gap:16px;margin-bottom:12px;">
+                <span style="font-size:2.2em;color:#d97706;">📱</span>
+                <h2 style="margin:0;">Invite Guests</h2>
+            </div>
+            <p style="color:#6e32c9;margin-bottom:8px;">Send instant invites for your ceremony via SMS or WhatsApp.</p>
+            <label for="invite-phone" style="font-weight:500;color:#1d1d1f;">Phone Numbers</label>
+            <input type="text" id="invite-phone" placeholder="e.g. 9876543210, 9123456789" style="margin-bottom:8px;">
+            <button style="display:flex;align-items:center;gap:8px;background:#6e32c9;box-shadow:0 2px 8px rgba(110,50,201,0.08);" onclick="alert('Invitations sent!')">
+                <span style="font-size:1.3em;">📨</span>
+                <span>Send Invites</span>
+            </button>
+            <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                document.querySelector('.invite-section button').onclick = function(e) {
+                    e.preventDefault();
+                    alert('Invitations sent!');
+                };
+            });
+            </script>
+            <script>
+            // Twilio SMS Integration (requires backend server for security)
+            // Replace with your Twilio credentials and backend endpoint
+            // Example POST request to your backend:
+            // fetch('/send-sms', {
+            //   method: 'POST',
+            //   headers: { 'Content-Type': 'application/json' },
+            //   body: JSON.stringify({
+            //     phones: document.getElementById('invite-phone').value,
+            //     message: 'You are invited to a ceremony via Ek Yana!'
+            //   })
+            // })
+            // .then(res => res.json())
+            // .then(data => alert('Invitations sent!'));
+            //
+            // Backend Example (Node.js/Express):
+            // const twilio = require('twilio');
+            // const client = twilio('TWILIO_ACCOUNT_SID', 'TWILIO_AUTH_TOKEN');
+            // app.post('/send-sms', (req, res) => {
+            //   const { phones, message } = req.body;
+            //   phones.split(',').forEach(phone => {
+            //     client.messages.create({
+            //       body: message,
+            //       from: 'YOUR_TWILIO_PHONE_NUMBER',
+            //       to: phone.trim()
+            //     });
+            //   });
+            //   res.json({ success: true });
+            // });
+            </script>
+            <div style="margin-top:16px;text-align:center;color:#888;font-size:0.95em;">
+                <span style="font-size:1.2em;">💡</span> <em>Coming soon: Real SMS/WhatsApp integration!</em>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

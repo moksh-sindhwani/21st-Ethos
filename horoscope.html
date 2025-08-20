@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Horoscope & Kundli</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .horoscope-container { max-width:900px; margin:40px auto; background:#fff8f0; border-radius:24px; box-shadow:0 4px 24px rgba(0,0,0,0.07); padding:32px; }
+        .horoscope-title { color:#6e32c9; font-size:2em; margin-bottom:1em; text-align:center; }
+        .input-section { display:flex; flex-direction:column; align-items:center; gap:12px; margin-bottom:24px; }
+        .input-section input { padding:10px 16px; border-radius:12px; border:1px solid #d1d5db; font-size:1em; }
+        .input-section button { background:#6e32c9; color:#fff; padding:10px 32px; border:none; border-radius:16px; font-size:1em; cursor:pointer; }
+        .daily-detail { background:#f5e9ff; border-radius:16px; padding:18px; margin-bottom:24px; color:#333; font-size:1.1em; }
+        .kundli-section { background:#e5e5e5; border-radius:16px; padding:24px; text-align:center; }
+        .kundli-title { color:#d97706; font-size:1.3em; margin-bottom:12px; }
+        .kundli-chart { margin:0 auto; display:block; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">🕉️ Ek Yana</div>
+       <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="pandit.html">Pandit Ji</a></li>
+            <li><a href="booking.html">Booking</a></li>
+            <li><a href="dharma.html">Dharma</a></li>
+            <li><a href="teachings.html">Teachings</a></li>
+            <li><a href="community.html">Community</a></li>
+            <li><a href="horoscope.html">Horoscope</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+  
+        <div class="nav-icons">
+            <span>🔍</span>
+            <span>🛒</span>
+        </div>
+    </nav>
+    <div class="horoscope-container">
+        <div class="horoscope-title">Your Daily Horoscope & Kundli</div>
+        <div class="input-section">
+            <label for="birthdate">Enter Your Birthdate</label>
+            <input type="date" id="birthdate" required>
+            <button onclick="showHoroscope()">Show My Horoscope</button>
+        </div>
+        <div class="daily-detail" id="daily-detail"></div>
+        <div class="kundli-section" id="kundli-section" style="display:none;">
+            <div class="kundli-title">Your Kundli Chart</div>
+            <canvas id="kundli-chart" class="kundli-chart" width="320" height="320"></canvas>
+            <div id="kundli-details" style="margin-top:12px;color:#333;"></div>
+        </div>
+    </div>
+    <script>
+        // Load Chart.js if not already loaded
+        function loadChartJs(callback) {
+            if (window.Chart) { callback(); return; }
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/chart.js';
+            script.onload = callback;
+            document.head.appendChild(script);
+        }
+    // Demo: 365 daily details
+    const dailyDetails = Array.from({length: 365}, (_, i) => `Day ${i+1}: Today is a day of spiritual growth and positive energy. Focus on your dharma and good deeds.`);
+    // Demo: Kundli details
+    function getKundliDetails(dateStr) {
+      // In real app, use astrology API or logic
+      return `Kundli for ${dateStr}: You are blessed with wisdom and strength. Favorable planets: Jupiter, Sun.`;
+    }
+    function showHoroscope() {
+      const birthdate = document.getElementById('birthdate').value;
+      if (!birthdate) { alert('Please enter your birthdate!'); return; }
+      const d = new Date(birthdate);
+      const dayOfYear = Math.floor((d - new Date(d.getFullYear(),0,0)) / 1000 / 60 / 60 / 24);
+      const detail = dailyDetails[(dayOfYear-1)%365];
+      document.getElementById('daily-detail').textContent = detail;
+      document.getElementById('kundli-section').style.display = 'block';
+      document.getElementById('kundli-details').textContent = getKundliDetails(birthdate);
+            // Draw Kundli chart using Chart.js (demo: 12 houses, random values)
+            loadChartJs(function() {
+                const ctx = document.getElementById('kundli-chart').getContext('2d');
+                if (window.kundliChart) window.kundliChart.destroy();
+                window.kundliChart = new Chart(ctx, {
+                    type: 'radar',
+                    data: {
+                        labels: ['House 1','House 2','House 3','House 4','House 5','House 6','House 7','House 8','House 9','House 10','House 11','House 12'],
+                        datasets: [{
+                            label: 'Kundli Chart',
+                            data: Array.from({length:12},()=>Math.floor(Math.random()*10)+1),
+                            backgroundColor: 'rgba(110,50,201,0.2)',
+                            borderColor: '#6e32c9',
+                            borderWidth: 2,
+                            pointBackgroundColor: '#d97706',
+                        }]
+                    },
+                    options: {
+                        scales: { r: { min: 0, max: 10 } },
+                        plugins: { legend: { display: false } }
+                    }
+                });
+            });
+    }
+    </script>
+</body>
+</html>
